@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- reset.css -->
+  <link rel="stylesheet" href="css/reset.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!-- local css -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- page title -->
+  <title>Jarret Yingling - Train Schedule</title>
+</head>
+
+<body>
+  <header id="masthead" role="banner">
+    <div class="container">
+      <section class="row pt-3">
+        <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light col-sm-8 col-md-6" role="navigation">
+          <a class="navbar-brand" href="index.html">Jarret Yingling</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Any Time is Train Time!<span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </section><!-- end row -->
+    </div><!-- end container -->
+  </header>
+
+  <main id="main-container" class="container" role="main">
+    <section class="row">
+      <div class="bg-light py-3 mt-3 col-12">
+        <span class="font-weight-bold">Current Train Schedule</span>
+      </div>
+    </section><!-- end row -->
+
+    <section class="row">
+      <table class="table table-striped bg-light col-12">
+        <thead>
+          <tr>
+            <th class="font-weight-bold" scope="col">Train Name</th>
+            <th class="font-weight-bold" scope="col">Destination</th>
+            <th class="font-weight-bold" scope="col">Frequency (min)</th>
+            <th class="font-weight-bold" scope="col">Next Arrival</th>
+            <th class="font-weight-bold" scope="col">Minutes Away</th>
+          </tr>
+        </thead>
+        <tbody id="table">
+          <!--
+            <tr>
+              <th scope="row">1</th>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            -->
+        </tbody>
+      </table>
+    </section><!-- end row -->
+
+    <section class="row">
+      <div id="search" class="bg-light pt-3 col-12 col-sm-5 col-lg-3">
+        <p class="font-weight-bold">Add Train</p>
+        <form>
+          Train Name:<br>
+          <input id="name" type="text"><br>
+          <br>
+          Destination:<br>
+          <input id="dest" type="text"><br>
+          <br>
+          First Train Time<br>
+          (HH:mm - military time):<br>
+          <input id="first" type="text"><br>
+          <br>
+          Frequency (min):<br>
+          <input id="freq" type="text"><br>
+          <br>
+          <input id="submit" type="submit"><br>
+          <br>
+        </form>
+      </div>
+    </section><!-- end row -->
+
+  </main><!-- end main container -->
+
+  <footer class="container" role="content info">
+    Copyright &copy;
+  </footer>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment-with-locales.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <!-- local JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>
