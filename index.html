@@ -55,16 +55,6 @@
           </tr>
         </thead>
         <tbody id="table">
-          <!--
-            <tr>
-              <th scope="row">1</th>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            -->
         </tbody>
       </table>
     </section><!-- end row -->
@@ -74,19 +64,20 @@
         <p class="font-weight-bold">Add Train</p>
         <form>
           Train Name:<br>
-          <input id="name" type="text"><br>
+          <input id="name" type="text" placeholder="Anonymous"><br>
           <br>
           Destination:<br>
-          <input id="dest" type="text"><br>
+          <input id="dest" type="text" placeholder="Anywhere"><br>
           <br>
           First Train Time<br>
           (HH:mm - military time):<br>
-          <input id="first" type="text"><br>
+          <input id="first" type="text" placeholder="13:45"><br>
           <br>
           Frequency (min):<br>
-          <input id="freq" type="text"><br>
+          <input id="freq" type="text" placeholder="60"><br>
           <br>
-          <input id="submit" type="submit"><br>
+          <input id="submit" type="submit"><br><br>
+          <button id="restore">Restore Original Schedule</button><br>
           <br>
         </form>
       </div>
