@@ -198,4 +198,12 @@ $(document).ready(function () {
         });
     }
 
+    let px = 200
+    $("#track").animate({
+        left: px + "px"
+    }, 15000, function () {
+        //complete
+    });
+
+
 });
