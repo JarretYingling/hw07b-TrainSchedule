@@ -21,25 +21,48 @@ $(document).ready(function () {
         case true:
             timeFormat = "ddd hh:mma";
     }
-    
+
+    function calcNextTrainTime(trainTime, trainFreq) {
+        console.log(trainTime, trainFreq);
+        while (moment(trainTime).isBefore(moment().unix())) {
+            trainTime = moment.unix(trainTime).add(trainFreq, "minutes").unix();
+        }
+        return trainTime;
+    }
+
     db.ref().on("child_added", function (snapshot) {
         console.log(snapshot.val());
-        let nextTrain = snapshot.val().first;
-        console.log(nextTrain);
-        console.log(snapshot.val().freq);
-        while (moment(nextTrain).isBefore(moment().unix())) {
-            nextTrain = moment.unix(nextTrain).add(snapshot.val().freq, "minutes").unix();
-        }
+        let nextTrainTime = calcNextTrainTime(snapshot.val().first, snapshot.val().freq);
         $("#table").append(`
         <tr>
             <td>${snapshot.val().name}</td>
             <td>${snapshot.val().dest}</td>
             <td>${snapshot.val().freq}</td>
-            <td>${moment.unix(nextTrain).format(timeFormat)}</td>
-            <td>${moment.unix(nextTrain).fromNow()}</td>
+            <td>${moment.unix(nextTrainTime).format(timeFormat)}</td>
+            <td>${moment.unix(nextTrainTime).fromNow()}</td>
         </tr>
         `);
     });
+
+    setInterval(function () {
+        db.ref().once("value", function (snapshot) {
+            console.log(snapshot.val());
+            $("#table").empty();
+            snapshot.forEach(element => {
+                console.log(element);
+                let nextTrainTime = calcNextTrainTime(element.val().first, element.val().freq);
+                $("#table").append(`
+                    <tr>
+                        <td>${element.val().name}</td>
+                        <td>${element.val().dest}</td>
+                        <td>${element.val().freq}</td>
+                        <td>${moment.unix(nextTrainTime).format(timeFormat)}</td>
+                        <td>${moment.unix(nextTrainTime).fromNow()}</td>
+                    </tr>
+                `);
+            });
+        });
+    }, 60000);
 
     $("#submit").on("click", function (event) {
         console.log(event);
@@ -67,7 +90,6 @@ $(document).ready(function () {
 
     function initializeTrains() {
         db.ref().set("");
-
         console.log(moment().unix());
 
         db.ref().push({
@@ -82,7 +104,7 @@ $(document).ready(function () {
                 'minute': 15,
                 'second': 0,
                 'millisecond': 0
-            }).unix() //.format("X")
+            }).unix()
         });
 
         db.ref().push({
@@ -97,7 +119,7 @@ $(document).ready(function () {
                 'minute': 39,
                 'second': 0,
                 'millisecond': 0
-            }).unix() //.format("X")
+            }).unix()
         });
 
         db.ref().push({
@@ -112,7 +134,7 @@ $(document).ready(function () {
                 'minute': 5,
                 'second': 0,
                 'millisecond': 0
-            }).unix() //.format("X")
+            }).unix()
         });
 
         db.ref().push({
@@ -127,7 +149,7 @@ $(document).ready(function () {
                 'minute': 38,
                 'second': 0,
                 'millisecond': 0
-            }).unix() //.format("X")
+            }).unix()
         });
 
         db.ref().push({
@@ -142,7 +164,7 @@ $(document).ready(function () {
                 'minute': 20,
                 'second': 0,
                 'millisecond': 0
-            }).unix() //.format("X")
+            }).unix()
         });
 
         db.ref().push({
@@ -157,7 +179,7 @@ $(document).ready(function () {
                 'minute': 25,
                 'second': 0,
                 'millisecond': 0
-            }).unix() //.format("X")
+            }).unix()
         });
 
         db.ref().push({
@@ -172,7 +194,7 @@ $(document).ready(function () {
                 'minute': 08,
                 'second': 0,
                 'millisecond': 0
-            }).unix() //.format("X")
+            }).unix()
         });
     }
 
